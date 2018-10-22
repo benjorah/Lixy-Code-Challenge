@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner v2.2.0</title>
+
+ 
+
+
+
+</head>
+
+<body>
+    <style>
+        .main{
+
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 5%;
+        }
+
+        #multiplication-table{
+            margin: 0 auto;
+            margin-top: 5%;
+
+        }
+
+        #multiplication-table tbody{
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+
+        #multiplication-table tbody tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+
+        #multiplication-table>tbody>tr>td{
+            margin:0;
+            padding: 8px;
+            border:1px solid black;
+            vertical-align: top;
+            line-height: 1.42857;
+        }
+    
+    </style>
+
+
+    <main class="main">
+        <h1 class="topic">
+            Prime Number Multiplication Table Generator
+        </h1>    
+
+        <p class="instruction">Enter a number to generate a multiplication table for that much number of primes</p>
+
+        <div id="table-control">
+        <input type="number" id="table-control__dimension"> <button id="table-control__button">Generate</button>
+        </div>
+
+        <table id="multiplication-table">
+
+        </table>
+
+    </main>
+
+
+ <!-- include source files here... -->
+ <script src="dist/prime.js"></script>
+ <script src="dist/index.js"></script>
+</body>
+</html>
