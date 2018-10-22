@@ -39,21 +39,29 @@ let view={
         this.table.innerHTML="";
 
 
+        //create table body to hold all the rows
         const tbody=document.createElement("tbody");
 
 
 
+        //create rows and then columns in each row
        for(let i=0;i<=model.current_prime_count;i++){
 
+            //create table row to hold all the columns
             const tr = document.createElement("tr");
 
             for(let j=0;j<=model.current_prime_count;j++){
 
+                
+                //create table data node to represent column
                 const td = document.createElement("td");
                 let txt=null
 
 
+                //create textNode to instert into each column
                 if(i===0 && j===0){
+
+                    //create empty cell at the first column of the first row of the table
                     txt=document.createTextNode("");
                 }
 
@@ -75,14 +83,18 @@ let view={
                 txt = document.createTextNode(`${model.prime_numbers[j-1]*model.prime_numbers[i-1]}`);
                 }
 
+                //insert the textNode into the column and then the column into the row
                 td.appendChild(txt);
                 tr.appendChild(td);
                 
             }
+
+            //insert the row into the created body
             tbody.appendChild(tr);
 
        }
 
+       //insert the body once to avoid reflow
        this.table.appendChild(tbody);
 
 

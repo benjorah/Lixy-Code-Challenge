@@ -29,4 +29,7 @@ Seperated my core functinality into a class (Prime Class) witrh well defined met
  . I composed test (which helped me a lot in the process) to test the core functionality under different conditions. This is to ensure that if the class is used in another application, it performs as expected. 
  . Using default parameters was a  ery important point in order to avoid unexpected crashes due to empty parameters or wrong parameter types
  . I also made sure that the variables that i maintained to oprimise primality test and prime generating were saving the correct values and keeping them for each object created.
+
+ ## Inserting rows
+ . I made sure to avoid reflows so the browser doesnt draw the table over an over again.
  
