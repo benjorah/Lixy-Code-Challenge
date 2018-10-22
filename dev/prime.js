@@ -111,6 +111,13 @@ class Prime{
             return primes;
         }
 
+        if(num===this.primes_count){
+
+            primes=[...this.known_primes];
+            return primes;
+
+        }
+
 
         //we initailize the for loop to start from the next odd number and to only consider odd numbers
         for(let i=this.largest_prime+2;this.primes_count<num;i+=2){

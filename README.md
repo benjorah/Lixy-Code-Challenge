@@ -11,6 +11,8 @@ Alternatively you can visit the liver version of this project on https://benjora
 To work on this project and to serve this project locally on your system, you need to have Node.js installed on your local machine as well as npm.
 These can be gotten from https://nodejs.org
 
+My thought process and consideration for this project can be found in thought-process.md
+
 
 ## Installing
 Navigate into the project directory of the cloned project and run the command below
