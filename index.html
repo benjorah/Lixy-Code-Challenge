@@ -22,7 +22,7 @@
 
         #multiplication-table{
             margin: 0 auto;
-            margin-top: 5%;
+            margin-top: 3%;
 
         }
 
@@ -45,6 +45,8 @@
             vertical-align: top;
             line-height: 1.42857;
         }
+
+    
     
     </style>
 
@@ -56,9 +58,13 @@
 
         <p class="instruction">Enter a number to generate a multiplication table for that much number of primes</p>
 
+
         <div id="table-control">
         <input type="number" id="table-control__dimension"> <button id="table-control__button">Generate</button>
         </div>
+
+        <h3 id="loading">GENERATING...</h3>
+
 
         <table id="multiplication-table">
 

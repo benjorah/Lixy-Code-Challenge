@@ -10,6 +10,7 @@ let view={
         this.table=document.getElementById("multiplication-table");
         this.table_input=document.getElementById("table-control__dimension");
         this.table_button=document.getElementById("table-control__button");
+        this.loadingText=document.getElementById("loading");
 
 
         //set button onclick listener
@@ -23,6 +24,7 @@ let view={
         });
 
         // render this view (update the table with the right cells)
+        this.hideLoading();
         this.render();
 
     },
@@ -31,6 +33,17 @@ let view={
     buildOptimizedRows(){
         //build more columns in one loop of the for loop so as to decrease runtime
 
+        
+
+    },
+
+
+    hideLoading(){
+        this.loadingText.style.display="none";
+    },
+
+    showLoading(){
+        this.loadingText.style.display="block";
     },
 
     render() {
@@ -50,7 +63,7 @@ let view={
             //create table row to hold all the columns
             const tr = document.createElement("tr");
 
-            for(let j=0;j<=model.current_prime_count;j++){
+            for(let j=0;j<=model.current_prime_count;j+=1){
 
                 
                 //create table data node to represent column
@@ -117,9 +130,20 @@ let controller={
 
     generate_primes(n=0){
         model.current_prime_count=n;
-        model.prime_numbers= this.primer.generate_primes_till(n);
-        console.log("primes are "+model.prime_numbers);
-        view.render();
+        view.showLoading();
+
+        new Promise((resolve, reject)=> {
+            
+            resolve(this.primer.generate_primes_till(n));     
+          }).then(result=>{
+
+            model.prime_numbers=[...result];
+            view.hideLoading();
+            view.render();
+            return result;
+
+          })
+         
         
 
     }

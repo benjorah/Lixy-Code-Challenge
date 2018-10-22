@@ -1,5 +1,7 @@
 "use strict";
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 //Model
 var model = { current_prime_count: 0, prime_numbers: [] };
 
@@ -12,6 +14,7 @@ var view = {
         this.table = document.getElementById("multiplication-table");
         this.table_input = document.getElementById("table-control__dimension");
         this.table_button = document.getElementById("table-control__button");
+        this.loadingText = document.getElementById("loading");
 
         //set button onclick listener
         this.table_button.addEventListener('click', function () {
@@ -22,11 +25,19 @@ var view = {
         });
 
         // render this view (update the table with the right cells)
+        this.hideLoading();
         this.render();
     },
     buildOptimizedRows: function buildOptimizedRows() {
         //build more columns in one loop of the for loop so as to decrease runtime
 
+
+    },
+    hideLoading: function hideLoading() {
+        this.loadingText.style.display = "none";
+    },
+    showLoading: function showLoading() {
+        this.loadingText.style.display = "block";
     },
     render: function render() {
         // update the DOM elements with values from the current primes\
@@ -42,7 +53,7 @@ var view = {
             //create table row to hold all the columns
             var tr = document.createElement("tr");
 
-            for (var j = 0; j <= model.current_prime_count; j++) {
+            for (var j = 0; j <= model.current_prime_count; j += 1) {
 
                 //create table data node to represent column
                 var td = document.createElement("td");
@@ -86,12 +97,23 @@ var controller = {
         view.init(); //display initial table for first 10 primes
     },
     generate_primes: function generate_primes() {
+        var _this2 = this;
+
         var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
         model.current_prime_count = n;
-        model.prime_numbers = this.primer.generate_primes_till(n);
-        console.log("primes are " + model.prime_numbers);
-        view.render();
+        view.showLoading();
+
+        new Promise(function (resolve, reject) {
+
+            resolve(_this2.primer.generate_primes_till(n));
+        }).then(function (result) {
+
+            model.prime_numbers = [].concat(_toConsumableArray(result));
+            view.hideLoading();
+            view.render();
+            return result;
+        });
     }
 };
 
