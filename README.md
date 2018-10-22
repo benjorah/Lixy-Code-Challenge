@@ -3,6 +3,7 @@ Prime number generator: Javascript coding challenge for Lixy
 
 ## Getting Started
 Clone this project to your system.
+Alternatively you can visit the liver version of this project on https://benjorah.github.io/Lixy-Code-Challenge/
 
 
 ### Prerequisites
@@ -11,7 +12,7 @@ To work on this project and to serve this project locally on your system, you ne
 These can be gotten from https://nodejs.org
 
 
-##Installing
+## Installing
 Navigate into the project directory of the cloned project and run the command below
 ```
 npm install
@@ -44,7 +45,7 @@ The automated test html sheet is served automatically too
 If you want to serve only the test sheet run
 
 ```
-npm run serve:text
+npm run serve:test
 ```
 
 This also watches for changes in the js file in /dev and in the spec file in /spec
